@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, sans-serif;
+    background-color: #fafafa;
+    color: #333;
+    line-height: 1.5;
+}
+
+/* Header */
+header {
+    background-color: #3b5998;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    margin-top: 0.5rem;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Hero */
+.hero {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: white;
+    border: 1px solid #ddd;
+    margin: 1.5rem auto;
+    border-radius: 6px;
+    width: 90%;
+}
+
+.hero h2 {
+    color: #3b5998;
+    margin-bottom: 0.5rem;
+}
+
+.hero p {
+    color: #666;
+}
+
+/* Main content */
+main {
+    width: 90%;
+    margin: 0 auto 2rem auto;
+}
+
+/* Cards */
+.content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background-color: white;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.card h3 {
+    color: #3b5998;
+    margin-bottom: 0.5rem;
+}
+
+/* About page */
+.about-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+.skills {
+    background-color: #f2f2f2;
+    padding: 1rem;
+    border-radius: 6px;
+}
+
+.skills h3 {
+    color: #3b5998;
+}
+
+.skills ul {
+    list-style: none;
+    margin-top: 0.5rem;
+}
+
+.skills li {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Contact */
+.contact-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.contact-form,
+.contact-info {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.4rem;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #3b5998;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2c4373;
+}
+
+/* Footer */
+footer {
+    background-color: #3b5998;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-content,
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+    
+    nav ul li {
+        display: block;
+        margin: 0.5rem 0;
+    }
+}
