@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupContactForm();
     
     // Cargar mensajes si estamos en admin
-    checkAdminSession();
+    //checkAdminSession();
     
     // Animación para las tarjetas
     animateCards();
@@ -40,7 +40,7 @@ function createMobileMenu() {
         });
     });
 }
-
+//Formulario de contacto
 function setupContactForm() {
     const contactForm = document.querySelector('.contact-form');
     if (!contactForm) return;
