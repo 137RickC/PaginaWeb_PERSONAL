@@ -1,4 +1,4 @@
-//MENÚ RESPONSIVE (Funcionalidad 1) 
+//MENÚ RESPONSIVE
 document.addEventListener('DOMContentLoaded', function() {
     // Crear botón de menú móvil
     createMobileMenu();
@@ -356,7 +356,7 @@ function showSampleMessages() {
     });
 }
 
-// ===== ANIMACIONES =====
+//ANIMACIONES
 function animateCards() {
     const cards = document.querySelectorAll('.info-card, .skill-item, .project-card, .service-card');
     
@@ -400,6 +400,6 @@ async function sendToServer(formData) {
     }
 }
 
-// ===== FUNCIONES GLOBALES PARA HTML =====
+//FUNCIONES GLOBALES PARA HTML
 window.loginAdmin = loginAdmin;
 window.logoutAdmin = logoutAdmin;
