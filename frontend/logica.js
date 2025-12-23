@@ -314,46 +314,88 @@ async function loadMessages() {
     } catch (error) {
         console.error('Error al cargar mensajes:', error);
         // Mostrar mensajes de ejemplo si el servidor no está disponible
-        showSampleMessages();
+        loadMessagees();
     }
 }
 
-function showSampleMessages() {
-    const messagesList = document.getElementById('messagesList');
-    if (!messagesList) return;
-    
-    const sampleMessages = [
-        {
-            name: "Juan Pérez",
-            email: "juan@example.com",
-            subject: "Consulta sobre proyectos",
-            message: "Me interesa colaborar en algún proyecto de desarrollo web.",
-            created_at: "2024-01-15 10:30:00"
-        },
-        {
-            name: "María García",
-            email: "maria@example.com",
-            subject: "Oportunidad de práctica",
-            message: "Tenemos una oportunidad de práctica para estudiantes de ingeniería.",
-            created_at: "2024-01-16 14:45:00"
+async function loadMessages() {
+    try {
+        const messagesList = document.getElementById('messagesList');
+        const messageCount = document.getElementById('messageCount');
+        
+        if (!messagesList || !messageCount) return;
+        
+        // Mostrar mensaje de carga
+        messagesList.innerHTML = '<p class="loading">🔄 Cargando mensajes de la base de datos...</p>';
+        
+        // 1. Hacer petición GET al servidor para obtener mensajes REALES
+        const response = await fetch('http://localhost:8000/messages');
+        
+        if (!response.ok) {
+            throw new Error(`Error HTTP ${response.status}: ${response.statusText}`);
         }
-    ];
-    
-    messagesList.innerHTML = '';
-    sampleMessages.forEach(msg => {
-        const messageDiv = document.createElement('div');
-        messageDiv.className = 'message-item';
-        messageDiv.innerHTML = `
-            <div class="message-header">
-                <span class="message-name">${msg.name}</span>
-                <span class="message-date">${msg.created_at}</span>
-            </div>
-            <div class="message-email"><strong>Email:</strong> ${msg.email}</div>
-            <div class="message-subject"><strong>Asunto:</strong> ${msg.subject}</div>
-            <div class="message-content">${msg.message}</div>
-        `;
-        messagesList.appendChild(messageDiv);
-    });
+        
+        // 2. Convertir respuesta a JSON (mensajes REALES de la BD)
+        const messages = await response.json();
+        
+        console.log('✅ Mensajes cargados desde base de datos:', messages);
+        
+        // 3. Actualizar contador
+        messageCount.textContent = messages.length;
+        
+        // 4. Mostrar mensajes o mensaje vacío
+        if (messages.length === 0) {
+            messagesList.innerHTML = `
+                <div class="no-messages">
+                    <h3>📭 No hay mensajes en la base de datos</h3>
+                    <p>Aún no se han recibido mensajes a través del formulario de contacto.</p>
+                    <p>Envía un mensaje desde <a href="/contact">la página de contacto</a> para verlo aquí.</p>
+                </div>
+            `;
+            return;
+        }
+        
+        // 5. Crear HTML para cada mensaje REAL
+        messagesList.innerHTML = '';
+        messages.forEach((msg, index) => {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message-item';
+            messageDiv.innerHTML = `
+                <div class="message-header">
+                    <span class="message-name">${msg.name || 'Anónimo'}</span>
+                    <span class="message-date">${msg.created_at || 'Sin fecha'}</span>
+                </div>
+                <div class="message-email">📧 <strong>Email:</strong> ${msg.email || 'No proporcionado'}</div>
+                <div class="message-subject">📌 <strong>Asunto:</strong> ${msg.subject || 'Sin asunto'}</div>
+                <div class="message-content">
+                    <strong>Mensaje:</strong><br>
+                    ${msg.message || 'Sin contenido'}
+                </div>
+                <div class="message-id"><small>ID: ${msg.id || index + 1}</small></div>
+            `;
+            messagesList.appendChild(messageDiv);
+        });
+        
+    } catch (error) {
+        console.error('Error cargando mensajes:', error);
+        
+        // MOSTRAR ERROR al usuario
+        const messagesList = document.getElementById('messagesList');
+        if (messagesList) {
+            messagesList.innerHTML = `
+                <div class="error-message">
+                    <h3>Error al conectar con el servidor</h3>
+                    <p><strong>Detalles:</strong> ${error.message}</p>
+                    <p><strong>Solución:</strong></p>
+                    <ol>
+                        <li>Asegúrate de que el servidor esté corriendo: <code>python backend/server.py</code></li>
+                        <li>Verifica que la ruta <code>/messages</code> esté configurada en el servidor</li>
+                        <li>Revisa la consola del navegador (F12) para más detalles</li>
+                    </ol>
+                </div>
+            `;
+        }
+    }
 }
 
 //ANIMACIONES
