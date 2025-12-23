@@ -244,8 +244,8 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
-
-// ===== FUNCIONALIDAD ADMIN =====
+/*
+//FUNCIONALIDAD ADMIN
 function checkAdminSession() {
     const adminPage = document.getElementById('adminPassword');
     if (!adminPage) return;
@@ -280,7 +280,7 @@ function logoutAdmin() {
     document.querySelector('.messages-section').style.display = 'none';
     document.getElementById('adminPassword').value = '';
 }
-
+*/
 async function loadMessages() {
     try {
         // Obtener mensajes del servidor
