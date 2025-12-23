@@ -71,8 +71,8 @@ class PortfolioHandler(http.server.SimpleHTTPRequestHandler):
             '/contact.html': 'contact.html',
             '/admin': 'admin.html',
             '/admin.html': 'admin.html',
-            '/css/style.css': 'css/style.css',
-            '/js/logica.js': 'js/logica.js'
+            '/style.css': 'style.css',
+            '/logica.js': 'logica.js'
         }
         
         # Rutas API
@@ -286,7 +286,7 @@ def init_database():
 
 def check_files():
     """Verificar que existan los archivos necesarios"""
-    print("\n🔍 Verificando archivos...")
+    print("\n Verificando archivos...")
     
     required_files = [
         ('index.html', os.path.join(FRONTEND_DIR, 'index.html')),
@@ -302,9 +302,9 @@ def check_files():
     all_ok = True
     for name, path in required_files:
         if os.path.exists(path):
-            print(f"  ✓ {name}")
+            print(f"  {name}")
         else:
-            print(f"  ✗ {name} - NO ENCONTRADO en: {path}")
+            print(f"  {name} - NO ENCONTRADO en: {path}")
             all_ok = False
     
     return all_ok
@@ -359,7 +359,7 @@ def main():
         try:
             httpd.serve_forever()
         except KeyboardInterrupt:
-            print("\n\n👋 Servidor detenido.")
+            print("\n\nServidor detenido.")
             print("=" * 60)
 
 if __name__ == "__main__":

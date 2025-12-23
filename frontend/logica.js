@@ -328,22 +328,22 @@ async function loadMessages() {
         // Mostrar mensaje de carga
         messagesList.innerHTML = '<p class="loading">🔄 Cargando mensajes de la base de datos...</p>';
         
-        // 1. Hacer petición GET al servidor para obtener mensajes REALES
+        //Hacer petición GET al servidor para obtener mensajes REALES
         const response = await fetch('http://localhost:8000/messages');
         
         if (!response.ok) {
             throw new Error(`Error HTTP ${response.status}: ${response.statusText}`);
         }
         
-        // 2. Convertir respuesta a JSON (mensajes REALES de la BD)
+        //Convertir respuesta a JSON (mensajes REALES de la BD)
         const messages = await response.json();
         
-        console.log('✅ Mensajes cargados desde base de datos:', messages);
+        console.log('Mensajes cargados desde base de datos:', messages);
         
-        // 3. Actualizar contador
+        //Actualizar contador
         messageCount.textContent = messages.length;
         
-        // 4. Mostrar mensajes o mensaje vacío
+        //Mostrar mensajes o mensaje vacío
         if (messages.length === 0) {
             messagesList.innerHTML = `
                 <div class="no-messages">
@@ -355,7 +355,7 @@ async function loadMessages() {
             return;
         }
         
-        // 5. Crear HTML para cada mensaje REAL
+        //Crear HTML para cada mensaje REAL
         messagesList.innerHTML = '';
         messages.forEach((msg, index) => {
             const messageDiv = document.createElement('div');
