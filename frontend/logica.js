@@ -262,7 +262,7 @@ function loginAdmin() {
     const password = document.getElementById('adminPassword').value;
     const errorElement = document.querySelector('.error-message');
     
-    // Contraseña simple (requisito del proyecto)
+    // Contraseña simple
     if (password === 'admin123') {
         sessionStorage.setItem('adminLoggedIn', 'true');
         document.querySelector('.login-section').style.display = 'none';
