@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupContactForm();
     
     // Cargar mensajes si estamos en admin
-    //checkAdminSession();
+    checkAdminSession();
     
     // Animación para las tarjetas
     animateCards();
@@ -244,7 +244,7 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
-/*
+
 //FUNCIONALIDAD ADMIN
 function checkAdminSession() {
     const adminPage = document.getElementById('adminPassword');
@@ -280,7 +280,7 @@ function logoutAdmin() {
     document.querySelector('.messages-section').style.display = 'none';
     document.getElementById('adminPassword').value = '';
 }
-*/
+
 async function loadMessages() {
     try {
         // Obtener mensajes del servidor
