@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Mensajes Recibidos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="logica.js"></script>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="login-section" id="loginSection">
+            <h2>Acceso Administrador</h2>
+            <p>Ingrese la contraseña para ver los mensajes recibidos</p>
+            <input type="password" id="adminPassword" placeholder="Contraseña">
+            <button onclick="loginAdmin()" class="btn-login">Acceder</button>
+            <div class="error-message" id="loginError"></div>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                <strong>Nota:</strong> Contraseña: <code>admin123</code>
+            </p>
+        </div>
+        
+        <div class="messages-section" id="messagesSection" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h2>📨 Mensajes Recibidos</h2>
+                <button onclick="logoutAdmin()" class="submit-btn" style="width: auto; padding: 0.5rem 1.5rem;">
+                    Cerrar Sesión
+                </button>
+            </div>
+            <div id="messagesList">
+                <p>Cargando mensajes...</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
