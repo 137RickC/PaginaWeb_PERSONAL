@@ -348,9 +348,6 @@ def main():
         print(f"   • http://localhost:{PORT}/messages  - GET mensajes")
         print(f"   • http://localhost:{PORT}/contact   - POST formulario")
         
-        print(f"\n CREDENCIALES ADMIN:")
-        print(f"   • Contraseña: admin123")
-        
         print(f"\n  SOLUCIÓN DE PROBLEMAS:")
         print(f"   • Error 404: Verifica que los archivos estén en {FRONTEND_DIR}/")
         print(f"   • CSS/JS no cargan: Verifica rutas en HTML")
